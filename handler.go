@@ -11,6 +11,10 @@ const (
 	DefaultHTTPErrorStatusCode = http.StatusInternalServerError
 )
 
+var (
+	DefaultHandler = NewHandler()
+)
+
 type HandlerFunc func(rw http.ResponseWriter, req *http.Request) interface{}
 
 type ErrMarshalFn func(err error) (statusCode int, body []byte)
@@ -89,4 +93,8 @@ func (h *Handler) SetWriteErrHandlerFn(fn func(int64, error)) *Handler {
 	}
 	h.writeErrHandlerFn = fn
 	return h
+}
+
+func WrapHandler(h HandlerFunc) http.HandlerFunc {
+	return DefaultHandler.Wrap(h)
 }
