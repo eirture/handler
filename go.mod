@@ -1,3 +1,3 @@
-module github.com/eirture/shandler
+module github.com/eirture/handler
 
 go 1.18

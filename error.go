@@ -1,4 +1,4 @@
-package shandler
+package handler
 
 type HTTPError struct {
 	StatusCode int
